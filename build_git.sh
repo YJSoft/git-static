@@ -1,5 +1,7 @@
 #! /usr/bin/env bash
 
+mkdir /output
+
 echo ""
 echo "This may take some time, please sit back and take a coffee."
 echo ""
@@ -13,7 +15,7 @@ export NO_CURL=1
 export CFLAGS="${CFLAGS} -static"
 
 make configure
-./configure prefix=/root/output
+./configure prefix=/output
 make -j $(nproc)
 make install
-make clean
+chmod -R a+r /output
